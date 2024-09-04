@@ -13,12 +13,15 @@ import java.util.UUID;
 public class MessagePublisher {
 
     @Autowired
-    private RabbitTemplate rabbitTemplate;
+    private RabbitTemplate template;
 
     @PostMapping("/publish")
     public String publishMessage(@RequestBody CustomMessage message) {
         message.setMessageId(UUID.randomUUID().toString());
         message.setMessageDate(new Date());
+        template.convertAndSend(MQConfig.EXCHANGE, MQConfig.RoutingKey, message);
+
+        return "Message Published";
     }
 
 }
