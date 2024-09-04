@@ -34,6 +34,7 @@ public class MQConfig {
         return new Jackson2JsonMessageConverter();
     }
 
+    @Bean
     public AmqpTemplate template(ConnectionFactory connectionFactory) {
         RabbitTemplate template = new RabbitTemplate(connectionFactory);
         template.setMessageConverter(messageConverter());

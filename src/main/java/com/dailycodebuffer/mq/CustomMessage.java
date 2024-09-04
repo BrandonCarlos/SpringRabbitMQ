@@ -11,7 +11,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class CustomerMessage {
+public class CustomMessage {
 
     private String messageId;
     private String message;
